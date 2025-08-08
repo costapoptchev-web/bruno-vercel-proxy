@@ -11,14 +11,13 @@ export default async function handler(req, res) {
     }
 
     const payload = req.body || {};
-
     const r = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
-    const text = await r.text(); // pass through for debugging
+    const text = await r.text();
     return res.status(200).json({
       status: 'sent',
       make_status: r.status,
