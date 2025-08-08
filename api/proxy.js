@@ -15,16 +15,16 @@ export default async function handler(req, res) {
     const r = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     });
 
-    const text = await r.text();
+    const text = await r.text(); // pass through for debugging
     return res.status(200).json({
       status: 'sent',
       make_status: r.status,
-      make_response: text,
+      make_response: text
     });
-  } catch (e) {
-    return res.status(500).json({ error: String(e) });
+  } catch (err) {
+    return res.status(500).json({ error: String(err) });
   }
 }
